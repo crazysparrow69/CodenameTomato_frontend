@@ -32,7 +32,7 @@ const useHttp = (applyData) => {
     [applyData]
   );
 
-  return [isLoading, error, sendRequest];
+  return {isLoading, error, sendRequest};
 };
 
 export default useHttp;
