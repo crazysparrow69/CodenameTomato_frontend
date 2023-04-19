@@ -6,6 +6,7 @@ import useHttp from "./hooks/use-http";
 import AppContext from "./context/app-context";
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState({});
   const [tasks, setTasks] = useState([]);
   
@@ -42,13 +43,17 @@ function App() {
             `Bearer ${token}`,
         },
       });
+
+      if (!userError) {
+        setIsLoggedIn(true);
+      }
     }
   }, []);
 
   return (
     <Wrapper>
       <AppContext.Provider value={{
-        isLoggedIn: false,
+        isLoggedIn: isLoggedIn,
         userData: user,
         tasks: tasks
       }}>
