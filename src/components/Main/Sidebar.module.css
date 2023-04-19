@@ -1,0 +1,21 @@
+.sidebar {
+  width: 25%;
+  background-color: #1f1f1f;
+}
+
+.sidebar__avatar {
+  height: 250px;
+  width: 100%;
+}
+
+.sidebar__avatar img{
+  width: 80%;
+  height: 80%;
+  margin: auto;
+  border-radius: 50%;
+  margin: 25px 25px 25px 25px;
+}
+
+.sidebar__username {
+  text-align: center;
+}

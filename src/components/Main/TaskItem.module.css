@@ -1,0 +1,54 @@
+.task {
+  background-color: #1f1f1f;
+  padding: 25px;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+.task__main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.task__title {
+  font-size: 26px;
+  margin-top: 5px;
+  padding-right: 10px;
+}
+
+.task__description {
+  padding-right: 10px;
+}
+
+.task__dates {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.task__delete-btn {
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  padding: 0 30px;
+  height: 40px;
+  line-height: 40px;
+  background-color: rgb(175, 48, 48);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  white-space: nowrap;
+  border: none;
+  border-radius: 2px;
+  box-shadow: 0 10px 30px rgba(197, 44, 51, 0.34);
+  text-transform: uppercase;
+  transition: all .3s;
+  font-family: 'Roboto', sans-serif;
+}
+
+.task__delete-btn:hover,
+.task__delete-btn:active {
+  background-color: #682125;
+  box-shadow: none;
+}

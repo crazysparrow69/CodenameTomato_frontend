@@ -1,0 +1,22 @@
+.header {
+  background-color: #1f1f1f;
+  padding: 15px 0px 15px 0px;
+}
+
+.header__row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.header__title {
+  font-size: 30px;
+}
+
+.header__title p{
+  margin: 0px;
+}
+
+.header__title span{
+  color: #c740d3;
+}

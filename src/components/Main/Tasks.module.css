@@ -1,0 +1,15 @@
+.tasks {
+  padding-left: 30px;
+  width: 75%;
+  height: fit-content;
+}
+
+.tasks__list {
+  padding-top: 10px;
+}
+
+.tasks__list ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}

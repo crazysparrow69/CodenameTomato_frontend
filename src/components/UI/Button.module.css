@@ -1,0 +1,25 @@
+.button {
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  padding: 0 30px;
+  height: 40px;
+  line-height: 40px;
+  background-color: #c740d3;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  white-space: nowrap;
+  border: none;
+  border-radius: 2px;
+  box-shadow: 0 10px 30px rgb(191 61 203 / 34%);
+  text-transform: uppercase;
+  transition: all .3s;
+  font-family: 'Roboto', sans-serif;
+}
+
+.button:hover,
+.button:active {
+  background-color: #822b8a;
+  box-shadow: none;
+}

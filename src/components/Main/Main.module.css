@@ -1,0 +1,9 @@
+.main {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.main__row {
+  display: flex;
+  flex-direction: row;
+}
