@@ -1,0 +1,22 @@
+.form {
+  width: 350px;
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+}
+.control input{
+  height: 30px;
+  margin-top: 5px;
+}
+
+.actions {
+  text-align: center;
+}
+
+.control p{
+  color: red;
+  margin: 5px 0 0 0;
+}
