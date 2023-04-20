@@ -3,6 +3,8 @@ import Button from "../UI/Button";
 import TaskItem from "./TaskItem";
 import AppContext from "../../context/app-context";
 import { useContext } from "react";
+import Modal from "../UI/Modal";
+import RegistrationForm from "../Forms/RegistrationForm";
 
 const Tasks = () => {
   const ctx = useContext(AppContext);
@@ -19,6 +21,9 @@ const Tasks = () => {
 
   return (
     <div className={styles.tasks}>
+      <Modal>
+        <RegistrationForm />
+      </Modal>
       <div className={styles["tasks__create"]}>
         <Button text="Create new task" />
       </div>
