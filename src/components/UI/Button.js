@@ -5,7 +5,7 @@ const Button = (props) => {
     
   };
 
-  return <button className={styles.button} onClick={clickHandler}>{props.text}</button>
+  return <button className={styles.button} onClick={clickHandler} type={props.type}>{props.text}</button>
 };
 
 export default Button;
