@@ -6,7 +6,7 @@ const Modal = (props) => {
     <div className={styles["modal-wrapper"]}>
       <div className={styles["modal-window"]}>
         <div className={styles["modal-actions"]}>
-          <button onCLick={props.onClose}>✖</button>
+          <button onClick={props.onClose}>✖</button>
         </div>
         {props.children}
       </div>
