@@ -77,7 +77,8 @@ const RegistrationForm = () => {
   });
 
   const registerRequestCallback = useCallback((data) => {
-    console.log(data);
+    localStorage.setItem("token", data.token);
+    document.location.reload();
   }, []);
 
   const {
@@ -117,11 +118,27 @@ const RegistrationForm = () => {
   const submitHandler = (event) => {
     event.preventDefault();
 
+    if (usernameState.value === "") {
+      dispatchUsername({ type: "INPUT_BLUR" });
+      return;
+    } else if (passwordState.value === "") {
+      dispatchPassword({ type: "INPUT_BLUR" });
+      return;
+    } else if (repassState.value === "") {
+      dispatchRepass({ type: "INPUT_BLUR" });
+      return;
+    }
+
     registerRequest({
       url: "http://localhost:3500/register",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
       body: {
         username: usernameState.value,
         password: passwordState.value,
+        repass: repassState.value
       },
     });
   };
@@ -134,6 +151,7 @@ const RegistrationForm = () => {
           type="text"
           onChange={usernameChangeHandler}
           onBlur={usernameBlurHandler}
+          autoComplete="enter username"
         ></input>
         {!usernameState.isValid && <p>Invalid input</p>}
       </div>
@@ -143,6 +161,7 @@ const RegistrationForm = () => {
           type="password"
           onChange={passwordChangeHandler}
           onBlur={passwordBlurHandler}
+          autoComplete="enter password"
         ></input>
         {!passwordState.isValid && <p>Invalid input</p>}
       </div>
@@ -152,6 +171,7 @@ const RegistrationForm = () => {
           type="password"
           onChange={repassChangeHandler}
           onBlur={repassBlurHandler}
+          autoComplete="repeat your password"
         ></input>
         {!repassState.isValid && <p>Passwords are not the same</p>}
       </div>
