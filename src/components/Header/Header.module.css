@@ -20,3 +20,21 @@
 .header__title span{
   color: #c740d3;
 }
+
+.form-mode {
+  padding-bottom: 10px;
+}
+
+.form-mode button{
+  background-color: #1f1f1f;
+  color: white;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-right: 5px;
+}
+
+.form-mode button:hover,
+.form-mode button:active
+{
+  cursor: pointer;
+}
