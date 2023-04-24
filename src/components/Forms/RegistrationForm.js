@@ -77,6 +77,10 @@ const RegistrationForm = () => {
   });
 
   const registerRequestCallback = useCallback((data) => {
+    if (registerError) {
+      return;
+    }
+
     localStorage.setItem("token", data.token);
     document.location.reload();
   }, []);
