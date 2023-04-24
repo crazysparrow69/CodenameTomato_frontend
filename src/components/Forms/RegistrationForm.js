@@ -175,6 +175,9 @@ const RegistrationForm = () => {
         ></input>
         {!repassState.isValid && <p>Passwords are not the same</p>}
       </div>
+      {registerError && <div className={styles.error}>
+          {registerError}
+        </div>}
       <div className={styles.actions}>
         <Button text="Register" type="submit" />
       </div>
