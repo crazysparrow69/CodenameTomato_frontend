@@ -10,11 +10,6 @@ function App() {
   const [user, setUser] = useState({});
   const [tasks, setTasks] = useState([]);
 
-  localStorage.setItem(
-    "token",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDNiZjRlYTYyMTZiYjY2YjJmNzIzMzUiLCJpYXQiOjE2ODE3MzEzMjMsImV4cCI6MTY4NDMyMzMyM30.hvdA_KB5wlJVrxk6xUZWFraiwwjghqODJU7U6J5BHfA"
-  );
-
   const userRequestCallback = useCallback((data) => {
     console.log(data);
     setUser(data);
