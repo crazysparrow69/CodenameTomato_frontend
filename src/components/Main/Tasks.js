@@ -5,19 +5,43 @@ import AppContext from "../../context/app-context";
 import { useContext, useState } from "react";
 import Modal from "../UI/Modal";
 import TaskForm from "../Forms/TaskForm";
+import useHttp from "../../hooks/use-http";
 
 const Tasks = () => {
   const [showModal, setShowModal] = useState(false);
+
+  const deleteTaskCallback = (data) => {
+    document.location.reload();
+  };
+
+  const {
+    isLoading: isTaskLoading,
+    error: taskError,
+    sendRequest: deleteTaskRequest,
+  } = useHttp(deleteTaskCallback);
+
+  const deleteHandler = (taskId) => {
+    console.log(taskId);
+    deleteTaskRequest({
+      url: `http://localhost:3500/task/${taskId}`,
+      method: "DELETE",
+      headers: {
+        authorization: localStorage.getItem("token")
+      }
+    });
+  };
 
   const ctx = useContext(AppContext);
 
   const taskItems = ctx.tasks.map((elem) => (
     <TaskItem
       key={elem._id}
+      id={elem._id}
       title={elem.title}
       description={elem.description}
       createdAt={elem.createdAt}
       deadline={elem.deadline}
+      onDelete={deleteHandler}
     />
   ));
 
