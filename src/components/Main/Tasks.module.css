@@ -4,6 +4,10 @@
   height: fit-content;
 }
 
+.warning {
+  text-align: center;
+}
+
 .tasks__list {
   padding-top: 10px;
 }
