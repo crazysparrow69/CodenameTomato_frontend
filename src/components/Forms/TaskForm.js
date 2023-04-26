@@ -8,14 +8,14 @@ const titleReducer = (state, action) => {
     return {
       value: action.value,
       isTouched: state.isTouched,
-      isValid: state.isTouched ? action.value.trim().length > 3 : true,
+      isValid: state.isTouched ? action.value.trim().length > 3 && action.value.trim().length < 30 : true,
     };
   }
   if (action.type === "INPUT_BLUR") {
     return {
       value: state.value,
       isTouched: true,
-      isValid: state.value.trim().length > 3,
+      isValid: state.value.trim().length > 3 && state.value.trim().length < 30,
     };
   }
   return { value: "", isTouched: false, isValid: true };
@@ -26,14 +26,14 @@ const descriptionReducer = (state, action) => {
     return {
       value: action.value,
       isTouched: state.isTouched,
-      isValid: state.isTouched ? action.value.trim().length > 3 : true,
+      isValid: state.isTouched ? action.value.trim().length > 3 && action.value.trim().length < 200 : true,
     };
   }
   if (action.type === "INPUT_BLUR") {
     return {
       value: state.value,
       isTouched: true,
-      isValid: state.value.trim().length > 3,
+      isValid: state.value.trim().length > 3 && state.value.trim().length < 200,
     };
   }
   return { value: "", isTouched: false, isValid: true };
@@ -51,7 +51,7 @@ const deadlineReducer = (state, action) => {
     return {
       value: state.value,
       isTouched: true,
-      isValid: action.value !== "",
+      isValid: state.value !== "",
     };
   }
   return { value: "", isTouched: false, isValid: true };
@@ -79,6 +79,8 @@ const TaskForm = () => {
   const taskRequestCallback = useCallback((data) => {
     document.location.reload();
   }, []);
+
+  const isFormValid = titleState.isValid && descriptionState.isValid && deadlineState.isValid;
 
   const {
     isLoading: isTaskLoading,
@@ -128,18 +130,21 @@ const TaskForm = () => {
       return;
     }
 
-    // registerRequest({
-    //   url: "http://localhost:3500/register",
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   },
-    //   body: {
-    //     title: titleState.value,
-    //     description: descriptionState.value,
-    //     deadline: deadlineState.value
-    //   },
-    // });
+    if (!isFormValid) return;
+
+    taskRequest({
+      url: "http://localhost:3500/task",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("token")
+      },
+      body: {
+        title: titleState.value,
+        description: descriptionState.value,
+        deadline: deadlineState.value
+      },
+    });
   };
 
   return (
