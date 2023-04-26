@@ -29,19 +29,25 @@ const Tasks = () => {
     setShowModal(false);
   };
 
-  return (
-    <div className={styles.tasks}>
-      {showModal && <Modal onClose={handleClosing} >
-        <TaskForm />
-      </Modal>}
+  const content = (
+    <>
+      {showModal && (
+        <Modal onClose={handleClosing}>
+          <TaskForm />
+        </Modal>
+      )}
       <div className={styles["tasks__create"]}>
         <Button text="Create new task" onClick={createTask} />
       </div>
       <div className={styles["tasks__list"]}>
-        <ul>
-          {taskItems}
-        </ul>
+        <ul>{taskItems}</ul>
       </div>
+    </>
+  );
+
+  return (
+    <div className={styles.tasks}>
+      {ctx.isLoggedIn ? content : <p className={styles.warning}>You need to login</p>}
     </div>
   );
 };
