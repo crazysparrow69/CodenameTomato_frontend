@@ -61,6 +61,8 @@ const LoginForm = () => {
     document.location.reload();
   }, []);
 
+  const isFormValid = usernameState.isValid && passwordState.isValid;
+
   const {
     isLoading: isLoginLoading,
     error: loginError,
@@ -94,6 +96,8 @@ const LoginForm = () => {
       return;
     }
 
+    if (!isFormValid) return;
+    
     loginRequest({
       url: "http://localhost:3500/auth",
       method: "POST",
