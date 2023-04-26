@@ -10,7 +10,7 @@ const TaskItem = (props) => {
             <p className={styles["task__description"]}>{props.description}</p>
           </div>
           <div>
-            <button className={styles["task__delete-btn"]}>Delete</button>
+            <button className={styles["task__delete-btn"]} onClick={() => props.onDelete(props.id)}>Delete</button>
           </div>
         </div>
         <div className={styles["task__dates"]}>
