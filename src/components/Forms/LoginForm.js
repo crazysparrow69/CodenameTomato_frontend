@@ -8,14 +8,14 @@ const usernameReducer = (state, action) => {
     return {
       value: action.value,
       isTouched: state.isTouched,
-      isValid: state.isTouched ? action.value.trim().length > 3 : true,
+      isValid: state.isTouched ? action.value.trim().length > 3 && action.value.trim().length < 20: true,
     };
   }
   if (action.type === "INPUT_BLUR") {
     return {
       value: state.value,
       isTouched: true,
-      isValid: state.value.trim().length > 3,
+      isValid: state.value.trim().length > 3 && state.value.trim().length < 20,
     };
   }
   return { value: "", isTouched: false, isValid: true };
@@ -26,14 +26,14 @@ const passwordReducer = (state, action) => {
     return {
       value: action.value,
       isTouched: state.isTouched,
-      isValid: state.isTouched ? action.value.trim().length > 5 : true,
+      isValid: state.isTouched ? action.value.trim().length > 3 && action.value.trim().length < 20 : true,
     };
   }
   if (action.type === "INPUT_BLUR") {
     return {
       value: state.value,
       isTouched: true,
-      isValid: state.value.trim().length > 5,
+      isValid: state.value.trim().length > 3 && state.value.trim().length < 20,
     };
   }
   return { value: "", isTouched: false, isValid: true };
@@ -97,7 +97,7 @@ const LoginForm = () => {
     }
 
     if (!isFormValid) return;
-    
+
     loginRequest({
       url: "http://localhost:3500/auth",
       method: "POST",
