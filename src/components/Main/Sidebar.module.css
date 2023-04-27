@@ -20,3 +20,23 @@
   text-align: center;
   padding-bottom: 15px;
 }
+
+.actions {
+  text-align: center;
+}
+
+.actions button {
+  background-color: #1f1f1f;
+  color: white;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.actions p {
+  color: red;
+}
+
+.upload img{
+  width: 100px;
+  height: 100px;
+}
