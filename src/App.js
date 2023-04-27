@@ -9,6 +9,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState({});
   const [tasks, setTasks] = useState([]);
+  const [avatar, setAvatar] = useState(null);
 
   const userRequestCallback = useCallback((data) => {
     console.log(data);
@@ -18,6 +19,11 @@ function App() {
   const taskRequestCallback = useCallback((data) => {
     console.log(data.foundTasks);
     setTasks(data.foundTasks);
+  }, []);
+
+  const avatarRequestCallback = useCallback((data) => {
+    console.log(data[0]);
+    setAvatar(data[0].file);
   }, []);
 
   const {
@@ -30,6 +36,11 @@ function App() {
     error: taskError,
     sendRequest: fetchTasks,
   } = useHttp(taskRequestCallback);
+  const {
+    isLoading: isAvatarLoading,
+    error: avatarError,
+    sendRequest: fetchAvatar,
+  } = useHttp(avatarRequestCallback);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -47,6 +58,12 @@ function App() {
           authorization: `Bearer ${token}`,
         },
       });
+      fetchAvatar({
+        url: "http://localhost:3500/image",
+        headers: {
+          authorization: `Bearer ${token}`
+        }
+      })
 
       if (!userError) {
         setIsLoggedIn(true);
@@ -61,6 +78,7 @@ function App() {
           isLoggedIn: isLoggedIn,
           userData: user,
           tasks: tasks,
+          avatar: avatar
         }}
       >
         <Header />
